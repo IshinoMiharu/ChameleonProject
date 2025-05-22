@@ -23,7 +23,7 @@ public class RankingManager : MonoBehaviour
         texts =textGroup.GetComponentsInChildren<Text>();
         for(int i = 0; i < 3; i++)
         {
-            texts[i].text = rankingData[i].ToString();
+            texts[i].text = $"{i + 1}:{rankingData[i].ToString().PadLeft(5, '0')}";
         }
     }
 }
