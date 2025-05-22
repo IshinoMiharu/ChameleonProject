@@ -21,10 +21,12 @@ public class PlayerMove : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.LeftArrow)) //早い左移動
             {
-                _rb.velocity = -transform.right * highspeed;
+                transform.eulerAngles = new Vector3(0, 180, 0);//左向く
+                _rb.velocity = transform.right * highspeed;
             }
             else if (Input.GetKey(KeyCode.RightArrow)) //早い右移動
             {
+                transform.eulerAngles = new Vector3(0, 0, 0);//右向く
                 _rb.velocity = transform.right * highspeed;
             }
             else  //左右の矢印が押されていないなら止まる
@@ -36,10 +38,12 @@ public class PlayerMove : MonoBehaviour
         {
             if (Input.GetKey(KeyCode.LeftArrow)) //通常左移動
             {
-                _rb.velocity = -transform.right * speed;
+                transform.eulerAngles = new Vector3(0, 180, 0);//左向く
+                _rb.velocity = transform.right * speed;
             }
             else if (Input.GetKey(KeyCode.RightArrow)) //通常右移動
             {
+                transform.eulerAngles = new Vector3(0, 0, 0);//右向く
                 _rb.velocity = transform.right * speed;
             }
             else  //左右の矢印が押されていないなら止まる
