@@ -20,4 +20,9 @@ public class ItemDestroy : MonoBehaviour
     {
         Destroy(collision.gameObject);
     }
+    
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        Destroy(other.gameObject);
+    }//ItemはisTriggerにcheckが入っているのでコードを修正。
 }
