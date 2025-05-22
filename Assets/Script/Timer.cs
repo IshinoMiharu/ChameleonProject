@@ -9,7 +9,7 @@ public class Timer : MonoBehaviour
     Text TimerText;
     [SerializeField]
     float _minutes = 1;
-    [SerializeField]
+    [SerializeField]//inspectorでいじれるようにする
     float _limitTime = 00;//制限時間
     [SerializeField]
     bool _isStop = false;
@@ -32,7 +32,7 @@ public class Timer : MonoBehaviour
         }
         else if (_limitTime < 0 && _minutes == 0)//一分も残っていない場合は秒数を0にする
         {
-            Debug.Log("Finish!");
+            Debug.Log("Finish!");//Finishを最初に出し、_isStopの動きをとめ、秒を0にする
             _isStop = true;
             _limitTime = 0;
         }
