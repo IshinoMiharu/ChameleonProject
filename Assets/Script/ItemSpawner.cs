@@ -21,8 +21,12 @@ public class ItemSpawner : MonoBehaviour
     public List<ItemData> itemList = new List<ItemData>();
 
     [Header("Spawn Settings")]
-    [Tooltip("ê∂ê¨ä‘äu")]
-    public float spawnInterval = 1.0f;
+    [Tooltip("ê∂ê¨ä‘äuÇÃç≈è¨íl")]
+    public float minSpawnInterval = 1.0f;
+
+    [Header("Spawn Settings")]
+    [Tooltip("ê∂ê¨ä‘äuÇÃç≈ëÂíl")]
+    public float maxSpawnInterval = 1.0f;
 
     Coroutine spawanCoroutine;
 
@@ -37,7 +41,9 @@ public class ItemSpawner : MonoBehaviour
         {
             SpawnRandomPrefab();
 
-            yield return new WaitForSeconds(spawnInterval);
+            float witTime = Random.Range(minSpawnInterval, maxSpawnInterval);
+
+            yield return new WaitForSeconds(witTime);
         }
     }
 
