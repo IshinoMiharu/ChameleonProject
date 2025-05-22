@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3509524413159831241}
   - component: {fileID: 3127353752393069896}
   m_Layer: 0
-  m_Name: RedItem
+  m_Name: ItemPrefabGreen
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -76,12 +76,12 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 26eeec52c234d7d4780cd599c5864301, type: 3}
-  m_Color: {r: 0.9607843, g: 0.16542068, b: 0.054901958, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 6ae24f46047d23b469af737f0a54882f, type: 3}
+  m_Color: {r: 0.42395753, g: 0.7433963, b: 0.22862937, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 0.2, y: 0.2}
+  m_Size: {x: 2.1, y: 1.58}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -99,7 +99,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8d7d65e1d352de44bfdbaceb7bf3051, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  colorTag: 1
+  colorTag: 4
   scoreValue: 10
 --- !u!70 &3509524413159831241
 CapsuleCollider2D:
@@ -151,7 +151,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 0.4
+  m_GravityScale: 1
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
