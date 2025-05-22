@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 3509524413159831241}
   - component: {fileID: 3127353752393069896}
   m_Layer: 0
-  m_Name: ItemPrefabRed
+  m_Name: YellowItem
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -77,7 +77,7 @@ SpriteRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: -2413806693520163455, guid: 00a4cecaa84df834687563712c27c52f, type: 3}
-  m_Color: {r: 1, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 0.82498324, b: 0, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -151,7 +151,7 @@ Rigidbody2D:
   m_Mass: 1
   m_LinearDrag: 0
   m_AngularDrag: 0.05
-  m_GravityScale: 1
+  m_GravityScale: 0.4
   m_Material: {fileID: 0}
   m_IncludeLayers:
     serializedVersion: 2
