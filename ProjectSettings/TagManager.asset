@@ -12,6 +12,7 @@ TagManager:
   - orange
   - black
   - white
+  - Trap
   layers:
   - Default
   - TransparentFX

@@ -40,6 +40,14 @@ public class ScoreManager : MonoBehaviour
         AnimateScoreChange();
     }
 
+    public void decreaseScore(int amount)
+    {
+        score -= amount;
+        Debug.Log($"スコアが減る！現在のスコア: {score}");
+
+        AnimateScoreChange();
+    }
+
     public int GetScore()
     {
         return score;

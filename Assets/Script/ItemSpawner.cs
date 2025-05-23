@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class ItemData
+class ItemData
 {
     [Header("Item Prefab")]
     [Tooltip("生成するアイテムのプレハブを設定")]
@@ -18,15 +18,13 @@ public class ItemSpawner : MonoBehaviour
 {
     [Header("Prefab List with Probability")]
     [Tooltip("プレハブを登録してくださいまた、その確率を設定してください")]
-    public List<ItemData> itemList = new List<ItemData>();
+    [SerializeField]
+    List<ItemData> itemList = new List<ItemData>();
 
     [Header("Spawn Settings")]
-    [Tooltip("生成間隔の最小値")]
-    public float minSpawnInterval = 1.0f;
-
-    [Header("Spawn Settings")]
-    [Tooltip("生成間隔の最大値")]
-    public float maxSpawnInterval = 1.0f;
+    [Tooltip("生成間隔")]
+    [SerializeField]
+    float spawnInterval = 1.0f;
 
     Coroutine spawanCoroutine;
 
@@ -41,9 +39,7 @@ public class ItemSpawner : MonoBehaviour
         {
             SpawnRandomPrefab();
 
-            float witTime = Random.Range(minSpawnInterval, maxSpawnInterval);
-
-            yield return new WaitForSeconds(witTime);
+            yield return new WaitForSeconds(spawnInterval);
         }
     }
 
@@ -85,5 +81,4 @@ public class ItemSpawner : MonoBehaviour
             spawanCoroutine = null;
         }
     }
-
 }
