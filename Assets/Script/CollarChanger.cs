@@ -141,15 +141,16 @@ public class ColorChanger : MonoBehaviour
                 if(item.tag != "Trap")
                 {
                     finalScore *= matchMultiplier;
+                    ScoreManager.Instance.AddScore(Mathf.RoundToInt(finalScore));
                     Debug.Log($"色一致アイテム発見！+{finalScore}点（倍率:{matchMultiplier}）");
                 }
             }
             else
             {
+                ScoreManager.Instance.AddScore(Mathf.RoundToInt(finalScore));
                 Debug.Log($"色不一致アイテム接触：+{finalScore}点");
             }
 
-            ScoreManager.Instance.AddScore(Mathf.RoundToInt(finalScore));
             currentTriggers.Remove(col);
             Destroy(col.gameObject);
         }
