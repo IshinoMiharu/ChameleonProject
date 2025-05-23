@@ -50,9 +50,9 @@ public class ColorChanger : MonoBehaviour
 
     private Color GetDesiredColor(out ColorTag tag)
     {
-        bool key1 = Input.GetKey(KeyCode.Alpha1);
-        bool key2 = Input.GetKey(KeyCode.Alpha2);
-        bool key3 = Input.GetKey(KeyCode.Alpha3);
+        bool key1 = Input.GetKey(KeyCode.A);
+        bool key2 = Input.GetKey(KeyCode.W);
+        bool key3 = Input.GetKey(KeyCode.D);
 
         if (key1 && key2 && key3)
         {
@@ -129,10 +129,18 @@ public class ColorChanger : MonoBehaviour
             int baseScore = item.ScoreValue;
             float finalScore = baseScore;
 
-            if (item.ColorTag == currentColorTag)
+            if (item.tag == "Trap")
             {
-                finalScore *= matchMultiplier;
-                Debug.Log($"色一致アイテム発見！+{finalScore}点（倍率:{matchMultiplier}）");
+                ScoreManager.Instance.decreaseScore(Mathf.RoundToInt(finalScore));
+
+            }
+            else if (item.ColorTag == currentColorTag)
+            {
+                if(item.tag != "Trap")
+                {
+                    finalScore *= matchMultiplier;
+                    Debug.Log($"色一致アイテム発見！+{finalScore}点（倍率:{matchMultiplier}）");
+                }
             }
             else
             {
