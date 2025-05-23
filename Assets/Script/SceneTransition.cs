@@ -1,3 +1,4 @@
+using System;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -5,17 +6,34 @@ using UnityEngine.UI;
 
 public class SceneTransition : MonoBehaviour
 {
+    private const string TitleSceneName = "Title";
+    private const string IngameSceneName = "InGame";
+    
     public Image fadePanel;
     public float fadeDuration = 1f;
     public string nextSceneName;
+
+    private void Start()
+    {
+         Scene scene = SceneManager.GetActiveScene();
+         if (scene.name == TitleSceneName)
+         {
+             SoundManager.instance.PlayBGM(SoundManager.BGM_Type.Tittle);
+         }
+         else
+         {
+             SoundManager.instance.PlayBGM(SoundManager.BGM_Type.GameStart);
+         }
+    }
+
     public void OnClickLoadScene()
     {
         ChangeScene(nextSceneName);
-        if (nextSceneName == "Title")
+        if (nextSceneName == TitleSceneName)
         {
             SoundManager.instance.PlayBGM(SoundManager.BGM_Type.Tittle);
         }
-        if (nextSceneName == "InGame")
+        if (nextSceneName == IngameSceneName)
         {
             SoundManager.instance.PlayBGM(SoundManager.BGM_Type.GameStart);
         }
@@ -27,7 +45,7 @@ public class SceneTransition : MonoBehaviour
 
         fadePanel.DOFade(1f, fadeDuration).OnComplete(() =>
         {
-            SceneManager.LoadScene(title);//ƒV[ƒ“–¼
+            SceneManager.LoadScene(title);//ï¿½Vï¿½[ï¿½ï¿½ï¿½ï¿½
         });
     }
 

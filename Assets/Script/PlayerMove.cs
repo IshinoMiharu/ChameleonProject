@@ -16,49 +16,49 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Rigdbody‚ğg‚Á‚½ˆÚ“®
-        if (Input.GetKey(KeyCode.Space)) //ƒXƒy[ƒXƒL[‰Ÿ‚µ‚½‚ç
+        //Rigdbodyï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½ï¿½Ú“ï¿½
+        if (Input.GetKey(KeyCode.Space)) //ï¿½Xï¿½yï¿½[ï¿½Xï¿½Lï¿½[ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         {
-            if (Input.GetKey(KeyCode.LeftArrow)) //‘‚¢¶ˆÚ“®
+            if (Input.GetKey(KeyCode.LeftArrow)) //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ú“ï¿½
             {
-                transform.eulerAngles = new Vector3(0, 180, 0);//¶Œü‚­
+                transform.eulerAngles = new Vector3(0, 180, 0);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 _rb.velocity = transform.right * highspeed;
             }
-            else if (Input.GetKey(KeyCode.RightArrow)) //‘‚¢‰EˆÚ“®
+            else if (Input.GetKey(KeyCode.RightArrow)) //ï¿½ï¿½ï¿½ï¿½ï¿½Eï¿½Ú“ï¿½
             {
-                transform.eulerAngles = new Vector3(0, 0, 0);//‰EŒü‚­
+                transform.eulerAngles = new Vector3(0, 0, 0);//ï¿½Eï¿½ï¿½ï¿½ï¿½
                 _rb.velocity = transform.right * highspeed;
             }
-            else  //¶‰E‚Ì–îˆó‚ª‰Ÿ‚³‚ê‚Ä‚¢‚È‚¢‚È‚ç~‚Ü‚é
+            else  //ï¿½ï¿½ï¿½Eï¿½Ì–ï¿½ó‚ª‰ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½È‚ï¿½ï¿½È‚ï¿½~ï¿½Ü‚ï¿½
             {
                 _rb.velocity = Vector2.zero;
             }
         }
         else
         {
-            if (Input.GetKey(KeyCode.LeftArrow)) //’Êí¶ˆÚ“®
+            if (Input.GetKey(KeyCode.LeftArrow)) //ï¿½Êí¶ï¿½Ú“ï¿½
             {
-                transform.eulerAngles = new Vector3(0, 180, 0);//¶Œü‚­
+                transform.eulerAngles = new Vector3(0, 180, 0);//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
                 _rb.velocity = transform.right * speed;
             }
-            else if (Input.GetKey(KeyCode.RightArrow)) //’Êí‰EˆÚ“®
+            else if (Input.GetKey(KeyCode.RightArrow)) //ï¿½Êï¿½Eï¿½Ú“ï¿½
             {
-                transform.eulerAngles = new Vector3(0, 0, 0);//‰EŒü‚­
+                transform.eulerAngles = new Vector3(0, 0, 0);//ï¿½Eï¿½ï¿½ï¿½ï¿½
                 _rb.velocity = transform.right * speed;
             }
-            else  //¶‰E‚Ì–îˆó‚ª‰Ÿ‚³‚ê‚Ä‚¢‚È‚¢‚È‚ç~‚Ü‚é
+            else  //ï¿½ï¿½ï¿½Eï¿½Ì–ï¿½ó‚ª‰ï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½È‚ï¿½ï¿½È‚ï¿½~ï¿½Ü‚ï¿½
             {
                 _rb.velocity = Vector2.zero;
             }
         }
 
-        //transform.position‚ğg‚Á‚½ˆÚ“®
-        //if (Input.GetKey(KeyCode.RightArrow)) //‰EˆÚ“®
+        //transform.positionï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½ï¿½Ú“ï¿½
+        //if (Input.GetKey(KeyCode.RightArrow)) //ï¿½Eï¿½Ú“ï¿½
         {
             transform.position += speed * transform.right * Time.deltaTime;
             SoundManager.instance.PlaySE(SoundManager.SE_Type.Walk);
         }
-        //if (Input.GetKey(KeyCode.LeftArrow))  //¶ˆÚ“®
+        //if (Input.GetKey(KeyCode.LeftArrow))  //ï¿½ï¿½ï¿½Ú“ï¿½
         {
             transform.position -= speed * transform.right * Time.deltaTime;
             SoundManager.instance.PlaySE(SoundManager.SE_Type.Walk);

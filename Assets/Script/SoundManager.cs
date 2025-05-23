@@ -5,51 +5,54 @@ using UnityEngine;
 
 
 /// <summary>
-/// ‰¹Œ¹ŠÇ—ƒNƒ‰ƒX
+/// ï¿½ï¿½ï¿½ï¿½ï¿½Ç—ï¿½ï¿½Nï¿½ï¿½ï¿½X
 /// </summary>
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
     public bool DontDestroyEnabled = true;
+    
+    [SerializeField] private AudioSource _bgmSource;
+    [SerializeField] private AudioSource _seSource;
 
-    // BGMŠÇ—
+    // BGMï¿½Ç—ï¿½
     void Start()
     {
         if (DontDestroyEnabled)
         {
-            // Scene‚ğ‘JˆÚ‚µ‚Ä‚àƒIƒuƒWƒFƒNƒg‚ªÁ‚¦‚È‚¢‚æ‚¤‚É‚·‚é
+            // Sceneï¿½ï¿½Jï¿½Ú‚ï¿½ï¿½Ä‚ï¿½ï¿½Iï¿½uï¿½Wï¿½Fï¿½Nï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½æ‚¤ï¿½É‚ï¿½ï¿½ï¿½
             DontDestroyOnLoad(this);
         }
     }
     public enum BGM_Type
     {
-        // BGM—p‚Ì—ñ‹“q‚ğƒQ[ƒ€‚É‡‚í‚¹‚Ä“o˜^
-        Tittle,
-        GameStart,
+        // BGMï¿½pï¿½Ì—ñ‹“qï¿½ï¿½ï¿½Qï¿½[ï¿½ï¿½ï¿½Éï¿½ï¿½í‚¹ï¿½Ä“oï¿½^
+        Tittle = 0,
+        GameStart = 1,
         End
-        //SILENCE = 999,        // –³‰¹ó‘Ô‚ğBGM‚Æ‚µ‚Äì¬‚µ‚½‚¢ê‡‚É‚Í’Ç‰Á‚µ‚Ä‚¨‚­B‚»‚êˆÈŠO‚Í•s—v
+        //SILENCE = 999,        // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô‚ï¿½BGMï¿½Æ‚ï¿½ï¿½Äì¬ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ê‡ï¿½É‚Í’Ç‰ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ï¿½Bï¿½ï¿½ï¿½ï¿½ÈŠOï¿½Í•sï¿½v
     }
 
 
-    // SEŠÇ—
+    // SEï¿½Ç—ï¿½
     public enum SE_Type
     {
-        ButtonPush,
-        ItemGet,
-        Walk,
-        Damage,
-        CountDown,
-        Start,
-        TimeUp,
+        ButtonPush = 0,
+        ItemGet = 1,
+        Walk = 2,
+        Damage = 3,
+        CountDown = 4,
+        Start = 5,
+        TimeUp = 6,
 
 
-        // SE—p‚Ì—ñ‹“q‚ğƒQ[ƒ€‚É‡‚í‚¹‚Ä“o˜^
+        // SEï¿½pï¿½Ì—ñ‹“qï¿½ï¿½ï¿½Qï¿½[ï¿½ï¿½ï¿½Éï¿½ï¿½í‚¹ï¿½Ä“oï¿½^
     }
 
-    // ƒNƒƒXƒtƒF[ƒhŠÔ
+    // ï¿½Nï¿½ï¿½ï¿½Xï¿½tï¿½Fï¿½[ï¿½hï¿½ï¿½ï¿½ï¿½
     public const float CROSS_FADE_TIME = 1.0f;
 
-    // ƒ{ƒŠƒ…[ƒ€ŠÖ˜A
+    // ï¿½{ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½Ö˜A
     public float BGM_Volume = 0.1f;
     public float SE_Volume = 0.2f;
     public bool Mute = false;
@@ -68,7 +71,7 @@ public class SoundManager : MonoBehaviour
 
     void Awake()
     {
-        // ƒVƒ“ƒOƒ‹ƒgƒ“‚©‚ÂAƒV[ƒ“‘JˆÚ‚µ‚Ä‚à”jŠü‚³‚ê‚È‚¢‚æ‚¤‚É‚·‚é
+        // ï¿½Vï¿½ï¿½ï¿½Oï¿½ï¿½ï¿½gï¿½ï¿½ï¿½ï¿½ï¿½ÂAï¿½Vï¿½[ï¿½ï¿½ï¿½Jï¿½Ú‚ï¿½ï¿½Ä‚ï¿½ï¿½jï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½ï¿½æ‚¤ï¿½É‚ï¿½ï¿½ï¿½
         if (instance == null)
         {
             instance = this;
@@ -79,11 +82,11 @@ public class SoundManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        // BGM—p AudioSource’Ç‰Á
+        // BGMï¿½p AudioSourceï¿½Ç‰ï¿½
         BGM_Sources[0] = gameObject.AddComponent<AudioSource>();
         BGM_Sources[1] = gameObject.AddComponent<AudioSource>();
 
-        // SE—p AudioSource’Ç‰Á
+        // SEï¿½p AudioSourceï¿½Ç‰ï¿½
         for (int i = 0; i < SE_Sources.Length; i++)
         {
             SE_Sources[i] = gameObject.AddComponent<AudioSource>();
@@ -92,7 +95,7 @@ public class SoundManager : MonoBehaviour
 
     void Update()
     {
-        // ƒ{ƒŠƒ…[ƒ€İ’è
+        // ï¿½{ï¿½ï¿½ï¿½ï¿½ï¿½[ï¿½ï¿½ï¿½İ’ï¿½
         if (!isCrossFading)
         {
             BGM_Sources[0].volume = BGM_Volume;
@@ -106,13 +109,18 @@ public class SoundManager : MonoBehaviour
     }
 
     /// <summary>
-    /// BGMÄ¶
+    /// BGMï¿½Äï¿½
     /// </summary>
     /// <param name="bgmType"></param>
     /// <param name="loopFlg"></param>
-    public void PlayBGM(BGM_Type bgmType, bool loopFlg = true)
+    public void PlayBGM(BGM_Type bgmType)
     {
-        // BGM‚È‚µ‚Ìó‘Ô‚É‚·‚éê‡            
+        _bgmSource.Stop();
+        _bgmSource.clip = BGM_Clips[(int)bgmType];
+        _bgmSource.Play();
+        
+        return;
+        // BGMï¿½È‚ï¿½ï¿½Ìï¿½Ô‚É‚ï¿½ï¿½ï¿½ê‡            
         if ((int)bgmType == 999)
         {
             StopBGM();
@@ -127,7 +135,7 @@ public class SoundManager : MonoBehaviour
             return;
         }
 
-        // “¯‚¶BGM‚Ìê‡‚Í‰½‚à‚µ‚È‚¢
+        // ï¿½ï¿½ï¿½ï¿½BGMï¿½Ìê‡ï¿½Í‰ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È‚ï¿½
         if (BGM_Sources[0].clip != null && BGM_Sources[0].clip == BGM_Clips[index])
         {
             return;
@@ -137,32 +145,28 @@ public class SoundManager : MonoBehaviour
             return;
         }
 
-        // ƒtƒF[ƒh‚ÅBGMŠJn
+        // ï¿½tï¿½Fï¿½[ï¿½hï¿½ï¿½BGMï¿½Jï¿½n
         if (BGM_Sources[0].clip == null && BGM_Sources[1].clip == null)
         {
-            BGM_Sources[0].loop = loopFlg;
-            BGM_Sources[0].clip = BGM_Clips[index];
-            BGM_Sources[0].Play();
-        }
+       }
         else
         {
-            // ƒNƒƒXƒtƒF[ƒhˆ—
-            StartCoroutine(CrossFadeChangeBMG(index, loopFlg));
+            
         }
     }
 
     /// <summary>
-    /// BGM‚ÌƒNƒƒXƒtƒF[ƒhˆ—
+    /// BGMï¿½ÌƒNï¿½ï¿½ï¿½Xï¿½tï¿½Fï¿½[ï¿½hï¿½ï¿½ï¿½ï¿½
     /// </summary>
-    /// <param name="index">AudioClip‚Ì”Ô†</param>
-    /// <param name="loopFlg">ƒ‹[ƒvİ’èBƒ‹[ƒv‚µ‚È‚¢ê‡‚¾‚¯falsew’è</param>
+    /// <param name="index">AudioClipï¿½Ì”Ôï¿½</param>
+    /// <param name="loopFlg">ï¿½ï¿½ï¿½[ï¿½vï¿½İ’ï¿½Bï¿½ï¿½ï¿½[ï¿½vï¿½ï¿½ï¿½È‚ï¿½ï¿½ê‡ï¿½ï¿½ï¿½ï¿½falseï¿½wï¿½ï¿½</param>
     /// <returns></returns>
     private IEnumerator CrossFadeChangeBMG(int index, bool loopFlg)
     {
         isCrossFading = true;
         if (BGM_Sources[0].clip != null)
         {
-            // [0]‚ªÄ¶‚³‚ê‚Ä‚¢‚éê‡A[0]‚Ì‰¹—Ê‚ğ™X‚É‰º‚°‚ÄA[1]‚ğV‚µ‚¢‹È‚Æ‚µ‚ÄÄ¶
+            // [0]ï¿½ï¿½ï¿½Äï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ê‡ï¿½A[0]ï¿½Ì‰ï¿½ï¿½Ê‚ï¿½ï¿½ï¿½ï¿½Xï¿½É‰ï¿½ï¿½ï¿½ï¿½ÄA[1]ï¿½ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½È‚Æ‚ï¿½ï¿½ÄÄï¿½
             BGM_Sources[1].volume = 0;
             BGM_Sources[1].clip = BGM_Clips[index];
             BGM_Sources[1].loop = loopFlg;
@@ -176,7 +180,7 @@ public class SoundManager : MonoBehaviour
         }
         else
         {
-            // [1]‚ªÄ¶‚³‚ê‚Ä‚¢‚éê‡A[1]‚Ì‰¹—Ê‚ğ™X‚É‰º‚°‚ÄA[0]‚ğV‚µ‚¢‹È‚Æ‚µ‚ÄÄ¶
+            // [1]ï¿½ï¿½ï¿½Äï¿½ï¿½ï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ê‡ï¿½A[1]ï¿½Ì‰ï¿½ï¿½Ê‚ï¿½ï¿½ï¿½ï¿½Xï¿½É‰ï¿½ï¿½ï¿½ï¿½ÄA[0]ï¿½ï¿½Vï¿½ï¿½ï¿½ï¿½ï¿½È‚Æ‚ï¿½ï¿½ÄÄï¿½
             BGM_Sources[0].volume = 0;
             BGM_Sources[0].clip = BGM_Clips[index];
             BGM_Sources[0].loop = loopFlg;
@@ -192,10 +196,13 @@ public class SoundManager : MonoBehaviour
     }
 
     /// <summary>
-    /// BGMŠ®‘S’â~
+    /// BGMï¿½ï¿½ï¿½Sï¿½ï¿½~
     /// </summary>
     public void StopBGM()
     {
+        _bgmSource.Stop();
+        
+        return;
         BGM_Sources[0].Stop();
         BGM_Sources[1].Stop();
         BGM_Sources[0].clip = null;
@@ -203,28 +210,31 @@ public class SoundManager : MonoBehaviour
     }
 
     /// <summary>
-    /// SEÄ¶
+    /// SEï¿½Äï¿½
     /// </summary>
     /// <param name="seType"></param>
     public void PlaySE(SE_Type seType)
     {
+        _seSource.PlayOneShot(SE_Clips[(int)seType]);
+        
+        return;
         int index = (int)seType;
         if (index < 0 || SE_Clips.Length <= index)
         {
             return;
         }
 
-        // Ä¶’†‚Å‚Í‚È‚¢AudioSource‚ğ‚Â‚©‚Á‚ÄSE‚ğ–Â‚ç‚·
+        // ï¿½Äï¿½ï¿½ï¿½ï¿½Å‚Í‚È‚ï¿½AudioSourceï¿½ï¿½ï¿½Â‚ï¿½ï¿½ï¿½ï¿½ï¿½SEï¿½ï¿½Â‚ç‚·
         foreach (AudioSource source in SE_Sources)
         {
 
-            // Ä¶’†‚Ì AudioSource ‚Ìê‡‚É‚ÍŸ‚Ìƒ‹[ƒvˆ—‚ÖˆÚ‚é
+            // ï¿½Äï¿½ï¿½ï¿½ï¿½ï¿½ AudioSource ï¿½Ìê‡ï¿½É‚Íï¿½ï¿½Ìƒï¿½ï¿½[ï¿½vï¿½ï¿½ï¿½ï¿½ï¿½ÖˆÚ‚ï¿½
             if (source.isPlaying)
             {
                 continue;
             }
 
-            // Ä¶’†‚Å‚È‚¢ AudioSource ‚É Clip ‚ğƒZƒbƒg‚µ‚Ä SE ‚ğ–Â‚ç‚·
+            // ï¿½Äï¿½ï¿½ï¿½ï¿½Å‚È‚ï¿½ AudioSource ï¿½ï¿½ Clip ï¿½ï¿½ï¿½Zï¿½bï¿½gï¿½ï¿½ï¿½ï¿½ SE ï¿½ï¿½Â‚ç‚·
             source.clip = SE_Clips[index];
             source.Play();
             break;
@@ -232,11 +242,11 @@ public class SoundManager : MonoBehaviour
     }
 
     /// <summary>
-    /// SE’â~
+    /// SEï¿½ï¿½~
     /// </summary>
     public void StopSE()
     {
-        // ‘S‚Ä‚ÌSE—p‚ÌAudioSource‚ğ’â~‚·‚é
+        // ï¿½Sï¿½Ä‚ï¿½SEï¿½pï¿½ï¿½AudioSourceï¿½ï¿½ï¿½~ï¿½ï¿½ï¿½ï¿½
         foreach (AudioSource source in SE_Sources)
         {
             source.Stop();
@@ -245,7 +255,7 @@ public class SoundManager : MonoBehaviour
     }
 
     /// <summary>
-    /// BGMˆê’â~
+    /// BGMï¿½êï¿½ï¿½~
     /// </summary>
     public void MuteBGM()
     {
@@ -254,7 +264,7 @@ public class SoundManager : MonoBehaviour
     }
 
     /// <summary>
-    /// ˆê’â~‚µ‚½“¯‚¶BGM‚ğÄ¶(ÄŠJ)
+    /// ï¿½êï¿½ï¿½~ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½BGMï¿½ï¿½ï¿½Äï¿½(ï¿½ÄŠJ)
     /// </summary>
     public void ResumeBGM()
     {
