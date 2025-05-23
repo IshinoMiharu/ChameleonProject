@@ -10,8 +10,17 @@ using UnityEngine;
 public class SoundManager : MonoBehaviour
 {
     public static SoundManager instance;
+    public bool DontDestroyEnabled = true;
 
     // BGM管理
+    void Start()
+    {
+        if (DontDestroyEnabled)
+        {
+            // Sceneを遷移してもオブジェクトが消えないようにする
+            DontDestroyOnLoad(this);
+        }
+    }
     public enum BGM_Type
     {
         // BGM用の列挙子をゲームに合わせて登録
@@ -20,6 +29,7 @@ public class SoundManager : MonoBehaviour
         End
         //SILENCE = 999,        // 無音状態をBGMとして作成したい場合には追加しておく。それ以外は不要
     }
+
 
     // SE管理
     public enum SE_Type
