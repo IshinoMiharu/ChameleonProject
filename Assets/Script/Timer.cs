@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 public class Timer : MonoBehaviour
 {
@@ -10,10 +11,12 @@ public class Timer : MonoBehaviour
     [SerializeField]
     float _minutes = 1;
     [SerializeField]
-    float _limitTime = 00;//§ŒÀŠÔ
+    float _limitTime = 00;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
     [SerializeField]
     bool _isStop = false;
-
+    
+    [SerializeField] private UnityEvent onTimerFinished;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -23,20 +26,21 @@ public class Timer : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Debug.Log($"{_minutes}:{_limitTime}");//$ƒ}[ƒN+""‚Ì’†‚Å–„‚ß‚İ‚É‚È‚é
-        if (!_isStop) { _limitTime -= Time.deltaTime; }//isStop‚ªelse‚ÌÀs‚µAtrue‚Ì‚â‚ß‚é
-        if (_limitTime < 0 && _minutes != 0)//ˆê•ªˆÈãc‚Á‚Ä‚¢‚éê‡A•ª‚ğŒ¸‚ç‚µ‚Ä•b”‚ğ59•b‚É‚·‚é
+        //Debug.Log($"{_minutes}:{_limitTime}");//$ï¿½}ï¿½[ï¿½N+""ï¿½Ì’ï¿½ï¿½Å–ï¿½ï¿½ßï¿½ï¿½İ‚É‚È‚ï¿½
+        if (!_isStop) { _limitTime -= Time.deltaTime; }//isStopï¿½ï¿½elseï¿½Ìï¿½ï¿½ï¿½ï¿½sï¿½ï¿½ï¿½Atrueï¿½Ìï¿½ï¿½ï¿½ß‚ï¿½
+        if (_limitTime < 0 && _minutes != 0)//ï¿½ê•ªï¿½Èï¿½cï¿½ï¿½ï¿½Ä‚ï¿½ï¿½ï¿½ê‡ï¿½Aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ç‚µï¿½Ä•bï¿½ï¿½ï¿½ï¿½59ï¿½bï¿½É‚ï¿½ï¿½ï¿½
         {
-            _minutes--;//•ª‚©‚ç1‚ğˆø‚­
+            _minutes--;//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
             _limitTime = 59.99f;
         }
-        else if (_limitTime < 0 && _minutes == 0)//ˆê•ª‚àc‚Á‚Ä‚¢‚È‚¢ê‡‚Í•b”‚ğ0‚É‚·‚é
+        else if (_limitTime < 0 && _minutes == 0)//ï¿½ê•ªï¿½ï¿½ï¿½cï¿½ï¿½ï¿½Ä‚ï¿½ï¿½È‚ï¿½ï¿½ê‡ï¿½Í•bï¿½ï¿½ï¿½ï¿½0ï¿½É‚ï¿½ï¿½ï¿½
         {
             Debug.Log("Finish!");
             _isStop = true;
             _limitTime = 0;
+            onTimerFinished?.Invoke();
         }
 
-        TimerText.text = _minutes.ToString("00") + ":"+ ((int)_limitTime).ToString("00");//c‚èŠÔ‚ğ®”‚Å•\¦
+        TimerText.text = _minutes.ToString("00") + ":"+ ((int)_limitTime).ToString("00");//ï¿½cï¿½èï¿½Ô‚ğ®ï¿½ï¿½Å•\ï¿½ï¿½
     }
 }

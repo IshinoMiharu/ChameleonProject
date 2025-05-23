@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class BGMManager : MonoBehaviour
 {
     private GameObject gametitlebgm;
     private GameObject gamestartbgm;
@@ -10,10 +10,10 @@ public class GameManager : MonoBehaviour
     [SerializeField] AudioClip gameObject;
     private AudioSource audioSource = null;
 
-    // [SerializeField] ‚Æ‚Â‚¯‚é‚ÆƒCƒ“ƒXƒyƒNƒ^[‰æ–Ê‚ÉQÆ‚ğæ“¾‚·‚é‚½‚ß‚Ì˜g‚ª•\¦‚³‚ê‚Ü‚·
+    // [SerializeField] ï¿½Æ‚Â‚ï¿½ï¿½ï¿½ÆƒCï¿½ï¿½ï¿½Xï¿½yï¿½Nï¿½^ï¿½[ï¿½ï¿½Ê‚ÉQï¿½Æ‚ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½é‚½ï¿½ß‚Ì˜gï¿½ï¿½ï¿½\ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü‚ï¿½
     private AudioSource _audioSource; 
-    [SerializeField] private AudioClip[] _audioClips; // ‰¹Œ¹ƒf[ƒ^‚Ì”z—ñ
-    // [SerializeField, Tooltip("Å‰‚É—¬‚µ‚½‚¢‰¹Œ¹‚Ìindex")] private int _initializeIndex = 0;
+    [SerializeField] private AudioClip[] _audioClips; // ï¿½ï¿½ï¿½ï¿½ï¿½fï¿½[ï¿½^ï¿½Ì”zï¿½ï¿½
+    // [SerializeField, Tooltip("ï¿½Åï¿½ï¿½É—ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½index")] private int _initializeIndex = 0;
 
     // Start is called before the first frame update
     void Start()
@@ -23,9 +23,9 @@ public class GameManager : MonoBehaviour
         gameoverbgm = GameObject.Find("GameOver BGM");
         audioSource = GetComponent<AudioSource>();
 
-        _audioSource = GetComponent<AudioSource>(); // AudioSource‚ÌQÆ‚ğæ“¾‚·‚é
-        //_audioSource.clip = _audioClips[_initializeIndex]; // ‰¼B”z—ñ‚Ìˆê”ÔÅ‰‚Ì‰¹Œ¹ƒf[ƒ^‚ğƒZƒbƒg‚·‚é
-        //_audioSource.Play(); // BGM‚ğÄ¶‚·‚é
+        _audioSource = GetComponent<AudioSource>(); // AudioSourceï¿½ÌQï¿½Æ‚ï¿½ï¿½æ“¾ï¿½ï¿½ï¿½ï¿½
+        //_audioSource.clip = _audioClips[_initializeIndex]; // ï¿½ï¿½ï¿½Bï¿½zï¿½ï¿½Ìˆï¿½ÔÅï¿½ï¿½Ì‰ï¿½ï¿½ï¿½ï¿½fï¿½[ï¿½^ï¿½ï¿½ï¿½Zï¿½bï¿½gï¿½ï¿½ï¿½ï¿½
+        //_audioSource.Play(); // BGMï¿½ï¿½ï¿½Äï¿½ï¿½ï¿½ï¿½ï¿½
     }
 
     // Update is called once per frame
@@ -49,12 +49,12 @@ public class GameManager : MonoBehaviour
     }
 
     /// <summary>
-    /// BGM‚ğ•ÏX‚·‚é
+    /// BGMï¿½ï¿½ÏXï¿½ï¿½ï¿½ï¿½
     /// </summary>
-    /// <param name="index">ƒNƒŠƒbƒv‚Ì”z—ñ‚ÌƒCƒ“ƒfƒbƒNƒX</param>
+    /// <param name="index">ï¿½Nï¿½ï¿½ï¿½bï¿½vï¿½Ì”zï¿½ï¿½ÌƒCï¿½ï¿½ï¿½fï¿½bï¿½Nï¿½X</param>
     public void ChangeBGM(int index)
     {
-        _audioSource.clip = _audioClips[index]; // —¬‚·‰¹Œ¹‚ğØ‚è‘Ö‚¦‚é
-        _audioSource.Play(); // Ä¶‚·‚é
+        _audioSource.clip = _audioClips[index]; // ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ø‚ï¿½Ö‚ï¿½ï¿½ï¿½
+        _audioSource.Play(); // ï¿½Äï¿½ï¿½ï¿½ï¿½ï¿½
     }
 }

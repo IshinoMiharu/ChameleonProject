@@ -10,6 +10,9 @@ public class ColorChanger : MonoBehaviour
     [Header("色の切り替えにかかる時間（秒）")]
     [SerializeField] private float colorChangeDuration = 0.5f;
 
+    [Header("一致時のスコア倍率")]
+    [SerializeField] private float matchMultiplier = 5f;
+
     private Material targetMaterial;
     private Color currentTargetColor = Color.white;
     private ColorTag currentColorTag = ColorTag.White;
@@ -103,8 +106,7 @@ public class ColorChanger : MonoBehaviour
 
     private void OnTriggerExit2D(Collider2D other)
     {
-        if (currentTriggers.Contains(other))
-            currentTriggers.Remove(other);
+        currentTriggers.Remove(other);
     }
 
     private void CheckMatchingColliders()
@@ -122,10 +124,22 @@ public class ColorChanger : MonoBehaviour
     {
         ColorItem item = col.GetComponent<ColorItem>();
 
-        if (item != null && item.ColorTag == currentColorTag)
+        if (item != null)
         {
-            Debug.Log($"色一致アイテム発見！+{item.ScoreValue}点");
-            ScoreManager.Instance.AddScore(item.ScoreValue);
+            int baseScore = item.ScoreValue;
+            float finalScore = baseScore;
+
+            if (item.ColorTag == currentColorTag)
+            {
+                finalScore *= matchMultiplier;
+                Debug.Log($"色一致アイテム発見！+{finalScore}点（倍率:{matchMultiplier}）");
+            }
+            else
+            {
+                Debug.Log($"色不一致アイテム接触：+{finalScore}点");
+            }
+
+            ScoreManager.Instance.AddScore(Mathf.RoundToInt(finalScore));
             currentTriggers.Remove(col);
             Destroy(col.gameObject);
         }

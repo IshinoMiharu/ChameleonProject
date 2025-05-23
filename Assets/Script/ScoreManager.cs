@@ -59,6 +59,11 @@ public class ScoreManager : MonoBehaviour
             animationDuration
         ).SetEase(Ease.OutCubic);
     }
+    public void RegisterScoreToRanking()
+    {
+        RankingManager.AddRankingData(score);
+    }
+
 
     private void UpdateScoreText(int value)
     {
