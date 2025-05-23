@@ -100,7 +100,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   colorTag: 7
-  scoreValue: 10
+  scoreValue: 300
 --- !u!70 &3509524413159831241
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
