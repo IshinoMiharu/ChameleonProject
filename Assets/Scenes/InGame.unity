@@ -2516,8 +2516,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   TimerText: {fileID: 1070909555}
-  _minutes: 0
-  _limitTime: 5
+  _minutes: 1
+  _limitTime: 0
   _isStop: 0
   onTimerFinished:
     m_PersistentCalls:
