@@ -56,10 +56,12 @@ public class PlayerMove : MonoBehaviour
         //if (Input.GetKey(KeyCode.RightArrow)) //‰EˆÚ“®
         {
             transform.position += speed * transform.right * Time.deltaTime;
+            SoundManager.instance.PlaySE(SoundManager.SE_Type.Walk);
         }
         //if (Input.GetKey(KeyCode.LeftArrow))  //¶ˆÚ“®
         {
             transform.position -= speed * transform.right * Time.deltaTime;
+            SoundManager.instance.PlaySE(SoundManager.SE_Type.Walk);
         }
     }
 }

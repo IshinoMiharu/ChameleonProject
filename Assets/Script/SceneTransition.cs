@@ -11,6 +11,14 @@ public class SceneTransition : MonoBehaviour
     public void OnClickLoadScene()
     {
         ChangeScene(nextSceneName);
+        if (nextSceneName == "Title")
+        {
+            SoundManager.instance.PlayBGM(SoundManager.BGM_Type.Tittle);
+        }
+        if (nextSceneName == "InGame")
+        {
+            SoundManager.instance.PlayBGM(SoundManager.BGM_Type.GameStart);
+        }
     }
     public void ChangeScene(string title)
     {

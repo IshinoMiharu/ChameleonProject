@@ -131,11 +131,13 @@ public class ColorChanger : MonoBehaviour
 
             if (item.tag == "Trap")
             {
+                SoundManager.instance.PlaySE(SoundManager.SE_Type.Damage);
                 ScoreManager.Instance.decreaseScore(Mathf.RoundToInt(finalScore));
 
             }
             else if (item.ColorTag == currentColorTag)
             {
+                SoundManager.instance.PlaySE(SoundManager.SE_Type.ItemGet);
                 if(item.tag != "Trap")
                 {
                     finalScore *= matchMultiplier;
